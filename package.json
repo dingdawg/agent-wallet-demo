@@ -1,0 +1,10 @@
+{
+  "name": "agent-wallet-demo",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "dingdawg-agent-wallet": "^1.0.0"
+  }
+}
