@@ -16,7 +16,7 @@ Shows **governed agent wallet** enforcement in action: allow, deny, step-up, all
   ✓ AUTHORIZED
   receipt_id:      6aba84a6-...
   daily_remaining: $175 USDC
-  next_step:       npx @coinbase/agentkit send --wallet-id ... --amount 25 --asset USDC
+  next_step:       wallet.sendToken({ assetId: "usdc", amount: "25", destination: "0xVendorABC123" })
 
 ▶ governed_spend — $150 USDC (exceeds per-call cap)
   ✗ DENIED
@@ -26,7 +26,7 @@ Shows **governed agent wallet** enforcement in action: allow, deny, step-up, all
 ▶ governed_spend — $75 USDC (step-up required)
   ⚠ STEP-UP REQUIRED
   reason: Amount 75 USDC > step-up threshold 50 USDC — MFA required
-  fix:    Pass b7_auth token from your trust gate
+  fix:    Pass approval_token from your authorization flow
 
 ▶ governed_spend — unknown recipient (not in allowlist)
   ✗ DENIED
@@ -42,7 +42,7 @@ Shows **governed agent wallet** enforcement in action: allow, deny, step-up, all
   [17:02:18] ALLOW              provision_wallet
 ```
 
-Every action — allow AND deny — produces an immutable receipt. `chain_verified: true` means the full chain is cryptographically intact.
+Every action — allow AND deny — produces an immutable receipt. `chain_verified: true` means the full chain is tamper-evident — any modification is detectable.
 
 ---
 
@@ -69,7 +69,7 @@ npm install dingdawg-agent-wallet
 |---|---|
 | `provision_wallet` | Create wallet with spend policy (daily cap, per-call cap, allowlist) |
 | `governed_spend` | Policy check → authorize → immutable receipt |
-| `governed_receive` | Accept payment with tamper-proof receipt |
+| `governed_receive` | Accept payment with tamper-evident receipt |
 | `wallet_policy` | Update limits and allowlists at runtime |
 | `wallet_audit` | Full receipt chain — `chain_verified: true` |
 
@@ -81,9 +81,9 @@ Coinbase AgentKit gives your agent a wallet. DingDawg gives it a conscience.
 
 AI agents can now hold USDC and spend autonomously. The infrastructure exists. What doesn't: **who enforces what the agent is allowed to spend, on what, for whom — and proves it happened correctly.**
 
-- `governed_spend` authorizes then returns the exact `coinbase_cmd` to execute on-chain
+- `governed_spend` authorizes then returns the exact `agentkit_call` SDK method to execute on-chain
 - Every denial is logged — you can prove what your agent *didn't* do
-- `chain_verified: true` means the audit trail cannot be tampered with after the fact
+- `chain_verified: true` means the audit trail is tamper-evident — any modification is detectable
 
 ---
 

@@ -5,8 +5,6 @@
  * No API keys. No blockchain. Runs in 5 seconds.
  *
  * Run:
- *   npx dingdawg-agent-wallet --demo
- *   — or —
  *   npm install dingdawg-agent-wallet @modelcontextprotocol/sdk
  *   node demo.mjs
  */
@@ -74,7 +72,7 @@ async function run() {
     console.log(`  ${GREEN}✓ AUTHORIZED${RESET}`);
     console.log(fmt("receipt_id", s1.receipt_id));
     console.log(fmt("daily_remaining", `$${s1.daily_remaining_usdc} USDC`));
-    console.log(fmt("next_step", s1.coinbase_cmd));
+    console.log(fmt("next_step", s1.agentkit_call));
   }
 
   // ── 3. Denied — over per-call cap ─────────────────────────
@@ -100,7 +98,7 @@ async function run() {
   if (!s3.authorized && s3.step_up_required) {
     console.log(`  ${YELLOW}⚠ STEP-UP REQUIRED${RESET}`);
     console.log(fmt("reason", s3.deny_reason));
-    console.log(fmt("fix", "Pass b7_auth token from your trust gate"));
+    console.log(fmt("fix", "Pass approval_token from your authorization flow"));
   }
 
   // ── 5. Blocked recipient ──────────────────────────────────
