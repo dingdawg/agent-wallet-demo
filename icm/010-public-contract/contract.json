@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "dingdawg.agent-wallet-demo.public.v1",
+  "package_name": "agent-wallet-demo",
+  "scope": "Local demonstration of allow, deny, and step-up policy outcomes for proposed agent wallet actions.",
+  "demo_only": true,
+  "real_wallet_creation": false,
+  "transaction_transmission": false,
+  "payment_authority": false,
+  "custody": false,
+  "secret_sauce_disclosure": false,
+  "evidence": "Console demonstration output only; it is not a financial-system audit record."
+}

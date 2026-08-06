@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
+  "scripts": {
+    "icm:check": "bash icm/010-public-contract/done.sh && bash icm/010-public-contract/verify.sh"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "dingdawg-agent-wallet": "^1.0.0"
