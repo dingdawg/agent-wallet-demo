@@ -2,6 +2,14 @@
 
 Shows **governed agent wallet** enforcement in action: allow, deny, step-up, allowlist — all in 5 seconds. No API keys. No blockchain required.
 
+## Deterministic public contract
+
+The [public ICM contract](./icm/ROUTER.md) lets an agent load only the demo's
+observable behavior and safety boundary. It does not contain MiLA's private
+prompts, model routing, policy mechanics, credentials, or infrastructure. This
+repository demonstrates a policy flow; it is not a wallet, payment processor,
+custodian, settlement service, or authorization to move funds.
+
 ---
 
 ## What it demonstrates
